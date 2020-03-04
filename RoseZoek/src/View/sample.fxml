@@ -42,7 +42,7 @@
                         <Button layoutX="285.0" layoutY="85.0" mnemonicParsing="false" onAction="#clicked_zoeken" text="Zoeken" />
                         <Button fx:id="btnAchterwaards" disable="true" layoutX="392.0" layoutY="85.0" mnemonicParsing="false" onMouseClicked="#clicked_Achterwaards" text="&lt;-" />
                         <Button fx:id="btnVoorwaards" disable="true" layoutX="622.0" layoutY="85.0" mnemonicParsing="false" onMouseClicked="#clicked_Voorwaards" text="-&gt;" />
-                        <Label fx:id="lblPlantResultaat" layoutX="451.0" layoutY="88.0" prefHeight="18.0" prefWidth="142.0" text="1ste resultaat" textAlignment="CENTER">
+                        <Label fx:id="lblPlantResultaat" layoutX="439.0" layoutY="62.0" prefHeight="54.0" prefWidth="166.0" text="           1ste resultaat" textAlignment="CENTER">
                            <font>
                               <Font size="13.0" />
                            </font>

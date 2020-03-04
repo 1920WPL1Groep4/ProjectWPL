@@ -3,6 +3,7 @@ package Controller;
 import Model.Plant;
 import dao.Database;
 import dao.PlantDao;
+import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
@@ -42,7 +43,6 @@ public class Controller {
     public ComboBox cmbbVoedingsbehoefte;   //Combox naam voor voedingsbehoefte.
 
 
-
     private Connection dbconnection;
 
     public Controller() throws SQLException {
@@ -53,7 +53,7 @@ public class Controller {
     }
 
     //Button die ervoorzorgt dat er een zoek resultaat wordt weergegeven in de textarea
-    public void clicked_zoeken(MouseEvent mouseEvent) throws SQLException {
+    public void clicked_zoeken(ActionEvent actionEvent) throws SQLException {
         txtUitkomst.clear();
         String sRequest = String.valueOf(txtPlant.getText());
         dao.PlantDao plantDao = new PlantDao(dbconnection);
@@ -81,9 +81,9 @@ public class Controller {
     public void clicked_Achterwaards(MouseEvent mouseEvent) {
         i--;
         if (i < 0) {
-            i = plantjes.size()-1;
+            i = plantjes.size() - 1;
         }
-       lblPlantResultaat.setText(String.valueOf(plantjes.get(i)));
+        lblPlantResultaat.setText(String.valueOf(plantjes.get(i).myToString()));
     }
 
     //Gaat een plant naar voor wanneer er op de button btnVoorwaards gedrukt wordt.
@@ -92,7 +92,7 @@ public class Controller {
         if (i > plantjes.size()) {
             i = 0;
         }
-        lblPlantResultaat.setText(String.valueOf(plantjes.get(i)));
+        lblPlantResultaat.setText(String.valueOf(plantjes.get(i).myToString()));
     }
 
     public void refreshRecords(List<Plant> plantjes) {
@@ -102,5 +102,8 @@ public class Controller {
     public void longWaitingTimesWarning() {
         JOptionPane.showMessageDialog(null, "deze zoekfunctie kan meer tijd in beslag nemen dan gewoonlijk. Dank u voor u geduld.");
     }
+
+
 }
+
 

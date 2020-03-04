@@ -20,9 +20,8 @@ public class PlantDao {
 
 //PreparedStatements die input toelaten om de query aan te vullen
 private static final String GETPLANTSBYNAME =
-        "SELECT * FROM Combined WHERE plantnaam LIKE ?"+
-                    "and Familienaam like ? " +
-                    "and groep like ?";
+        "SELECT * FROM Combined WHERE plantnaam LIKE ?";
+
 
 
     private PreparedStatement stmtSelectByName;
