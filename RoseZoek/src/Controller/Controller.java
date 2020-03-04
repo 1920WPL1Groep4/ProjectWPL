@@ -7,6 +7,7 @@ import java.sql.*;
 
 public class Controller {
 
+
     private Connection dbconnection;
     //Statement is static zoals hier prepared statement is dynamisch en laat dus toe waarden in te brengen om op te zoeken
     private PreparedStatement stmtselectbyid;
