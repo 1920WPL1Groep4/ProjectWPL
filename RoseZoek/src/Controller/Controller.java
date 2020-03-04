@@ -58,7 +58,6 @@ public class Controller {
         dao.PlantDao plantDao = new PlantDao(dbconnection);
         List<Plant> plantjes = plantDao.getAllStartingByName(sRequest);
         refreshRecords(plantjes);
-
         if (txtPlant.getText().equals("") && plantjes.size() > 1000) {
             longWaitingTimesWarning();
         }
