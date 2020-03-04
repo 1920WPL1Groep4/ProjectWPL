@@ -41,7 +41,7 @@ private static final String GETPLANTSBYNAME =
             Statement stmt = dbConnection.createStatement();
             ResultSet rs = stmt.executeQuery(GETALLPLANTS);
             while (rs.next()) {
-                Plant plantje = new Plant(rs.getString("plantnaam"),rs.getString("groep"),rs.getString("Familienaam"));
+                Plant plantje = new Plant(rs.getString("plantnaam"),rs.getString("Familienaam"));
                 plantList.add(plantje);
             }
         } catch (SQLException ex) {
@@ -58,7 +58,7 @@ private static final String GETPLANTSBYNAME =
         stmtSelectByName.setString(1,"%"+ naam +"%");
         ResultSet rs=stmtSelectByName.executeQuery();
         while(rs.next()){
-        Plant plantje = new Plant(rs.getString("plantnaam"),rs.getString("groep"),rs.getString("Familienaam"));
+            Plant plantje = new Plant(rs.getString("plantnaam"),rs.getString("Familienaam"));
         plantList.add(plantje);
 
         }
