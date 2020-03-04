@@ -73,6 +73,7 @@ public class Controller {
             btnAchterwaards.setDisable(false);
             btnVoorwaards.setDisable(false);
             i = 0;
+            lblPlantResultaat.setText(String.valueOf(plantjes.get(i). MyPlantNameToString()));
         }
 
     }
@@ -83,16 +84,16 @@ public class Controller {
         if (i < 0) {
             i = plantjes.size() - 1;
         }
-        lblPlantResultaat.setText(String.valueOf(plantjes.get(i).myToString()));
+        lblPlantResultaat.setText(String.valueOf(plantjes.get(i).MyPlantNameToString()));
     }
 
     //Gaat een plant naar voor wanneer er op de button btnVoorwaards gedrukt wordt.
     public void clicked_Voorwaards(MouseEvent mouseEvent) {
         i++;
-        if (i > plantjes.size()) {
+        if (i > plantjes.size()-1) {
             i = 0;
         }
-        lblPlantResultaat.setText(String.valueOf(plantjes.get(i).myToString()));
+        lblPlantResultaat.setText(String.valueOf(plantjes.get(i).MyPlantNameToString()));
     }
 
     public void refreshRecords(List<Plant> plantjes) {
