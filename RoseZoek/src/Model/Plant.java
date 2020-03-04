@@ -10,7 +10,7 @@ public class Plant {
     }
 
     public String myToString(){
-        String sAnswer = "type = "+sNaam+ "\r\n"+ "Familie = "+sFamilie;
+        String sAnswer = "plantnaam = "+sNaam+ "\r\n"+ "Familie = "+sFamilie;
 
         return sAnswer;
     }

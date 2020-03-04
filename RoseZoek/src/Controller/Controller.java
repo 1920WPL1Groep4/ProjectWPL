@@ -1,13 +1,14 @@
 package Controller;
 
+import Model.Plant;
 import dao.Database;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextArea;
+import dao.PlantDao;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
+import javax.swing.*;
 import java.sql.*;
+import java.util.List;
 
 public class Controller {
 
@@ -31,7 +32,8 @@ public class Controller {
     public Button btnZoeken;
     public Button btnAchterwaards;
     public Button btnVoorwaards;
-
+    public TextField txtPlant;
+    public List<Plant> plantjes;
 
     private Connection dbconnection;
     //Statement is static zoals hier prepared statement is dynamisch en laat dus toe waarden in te brengen om op te zoeken
@@ -45,7 +47,27 @@ public class Controller {
     }
 
     //Button die ervoorzorgt dat er een zoek resultaat wordt weergegeven in de textarea
-    public void clicked_Zoeken(MouseEvent mouseEvent) {
+    public void clicked_Zoeken(MouseEvent mouseEvent) throws SQLException {
+        txtUitkomst.clear();
+        String sRequest = String.valueOf(txtPlant.getText());
+        dao.PlantDao plantDao = new PlantDao(dbconnection);
+        List<Plant> plantjes = plantDao.getAllStartingByName(sRequest);
+        refreshRecords(plantjes);
+
+        if (txtPlant.getText().equals("") && plantjes.size() > 1000) {
+            longWaitingTimesWarning();
+        }
+        for (Plant plantje : plantjes
+        ) {
+            txtUitkomst.setText(txtUitkomst.getText() + plantje.myToString() + "\r\n");
+        }
+        if (plantjes.size() == 0) {
+            txtUitkomst.setText("Geen planten gevonden");
+            JOptionPane.showMessageDialog(null, "Geen planten gevonden");
+        } else {
+            btnAchterwaards.setDisable(false);
+            btnVoorwaards.setDisable(false);
+        }
 
     }
 
@@ -53,6 +75,14 @@ public class Controller {
     }
 
     public void clicked_Voorwaards(MouseEvent mouseEvent) {
+    }
+
+    public void refreshRecords(List<Plant> plantjes) {
+        System.out.println(plantjes.size());
+    }
+
+    public void longWaitingTimesWarning() {
+        JOptionPane.showMessageDialog(null, "deze zoekfunctie kan meer tijd in beslag nemen dan gewoonlijk. Dank u voor u geduld.");
     }
 }
 
