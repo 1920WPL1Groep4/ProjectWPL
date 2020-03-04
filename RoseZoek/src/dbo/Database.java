@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Database {
-    private static  String jdbcDriver;
     private static  String url;
     private static  String user;
     private static  String password;
@@ -40,7 +39,6 @@ public class Database {
             // load a properties file
             prop.load(inputStream);
             // get the property value
-            jdbcDriver = prop.getProperty("db.jdbcDriver");
             url = prop.getProperty("db.url");
             user = prop.getProperty("db.user");
             password = prop.getProperty("db.password");

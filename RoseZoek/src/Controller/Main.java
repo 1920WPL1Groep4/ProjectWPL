@@ -16,10 +16,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
-    public void stop(){
-        System.out.println("closing...");
-        System.exit(0);
-    }
+
 
     public static void main(String[] args) {
         launch(args);

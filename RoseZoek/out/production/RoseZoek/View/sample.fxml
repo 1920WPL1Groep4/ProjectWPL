@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:controller="Controller.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <children>
-      <Button layoutX="274.0" layoutY="147.0" mnemonicParsing="false" onAction="#btn" text="Button" />
+      <Button layoutX="582.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnSearchAll" text="Search All (Testing)" />
+      <TextField fx:id="txtUserInput" layoutX="34.0" layoutY="32.0" prefHeight="26.0" prefWidth="224.0" promptText="Zoek opdracht hier" />
+      <Button layoutX="276.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnZoekviaNaam" prefHeight="26.0" prefWidth="51.0" text="Zoek" />
+      <Button fx:id="btnPrevious" disable="true" layoutX="22.0" layoutY="82.0" mnemonicParsing="false" onAction="#btnTerug" text="&lt;" />
+      <Button fx:id="btnNext" disable="true" layoutX="246.0" layoutY="82.0" mnemonicParsing="false" onAction="#btnVolgende" text="&gt;" />
+      <Label fx:id="lblResult" layoutX="59.0" layoutY="68.0" prefHeight="54.0" prefWidth="178.0" text="          1ste resultaat hier" />
+      <TextArea fx:id="txtResult" layoutX="34.0" layoutY="152.0" prefHeight="323.0" prefWidth="241.0" promptText="Lijst van gelijkaardige namen hier" />
+      <ListView fx:id="listResult" layoutX="325.0" layoutY="151.0" prefHeight="323.0" prefWidth="234.0" />
+      <Label layoutX="34.0" layoutY="475.0" text="Aantal records" />
+      <Label fx:id="lblAantalRecords" layoutX="118.0" layoutY="475.0" text="0" />
    </children>
 </AnchorPane>
