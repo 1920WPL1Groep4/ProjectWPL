@@ -18,7 +18,7 @@ public class Plant {
     }
 //functie bram
     public String MyPlantNameToString(){
-        String sAnswer = "plantnaam" +sNaam;
+        String sAnswer = "plantnaam: " +sNaam;
        return sAnswer;
     };
 
