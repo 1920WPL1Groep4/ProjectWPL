@@ -1,7 +1,6 @@
 package Controller;
 
-import dbo.Database;
-import javafx.event.ActionEvent;
+import dao.Database;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
@@ -44,16 +43,11 @@ public class Controller {
         System.out.println(dbconnection);
 
     }
-    
-
-    public void btnSearchAll(ActionEvent actionEvent) {
-        System.out.println("just for testing purposes");
-    }
 
     //Button die ervoorzorgt dat er een zoek resultaat wordt weergegeven in de textarea
     public void clicked_Zoeken(MouseEvent mouseEvent) {
-    }
 
+    }
 
     public void clicked_Achterwaards(MouseEvent mouseEvent) {
     }
