@@ -2,22 +2,51 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <children>
-      <Button layoutX="582.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnSearchAll" text="Search All (Testing)" />
-      <TextField fx:id="txtUserInput" layoutX="34.0" layoutY="32.0" prefHeight="26.0" prefWidth="224.0" promptText="Zoek opdracht hier" />
-      <Button layoutX="276.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnZoekviaNaam" prefHeight="26.0" prefWidth="51.0" text="Zoek" />
-      <Button fx:id="btnPrevious" disable="true" layoutX="22.0" layoutY="82.0" mnemonicParsing="false" onAction="#btnTerug" text="&lt;" />
-      <Button fx:id="btnNext" disable="true" layoutX="246.0" layoutY="82.0" mnemonicParsing="false" onAction="#btnVolgende" text="&gt;" />
-      <Label fx:id="lblResult" layoutX="59.0" layoutY="68.0" prefHeight="54.0" prefWidth="178.0" text="          1ste resultaat hier" />
-      <TextArea fx:id="txtResult" layoutX="34.0" layoutY="152.0" prefHeight="323.0" prefWidth="241.0" promptText="Lijst van gelijkaardige namen hier" />
-      <ListView fx:id="listResult" layoutX="325.0" layoutY="151.0" prefHeight="323.0" prefWidth="234.0" />
-      <Label layoutX="34.0" layoutY="475.0" text="Aantal records" />
-      <Label fx:id="lblAantalRecords" layoutX="118.0" layoutY="475.0" text="0" />
+      <TabPane fx:id="TabPane" layoutX="14.0" layoutY="14.0" prefHeight="493.0" prefWidth="706.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Zoeken">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="txtPlant" layoutX="102.0" layoutY="62.0" />
+                        <Label layoutX="313.0" layoutY="14.0" text="Plant zoeken">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblType" layoutX="27.0" layoutY="102.0" text="Type" />
+                        <Label fx:id="lblFamilie" layoutX="26.0" layoutY="130.0" text="Familie" />
+                        <Label fx:id="lblGelsacht" layoutX="26.0" layoutY="162.0" text="Geslacht" />
+                        <Label fx:id="lblSoort" layoutX="26.0" layoutY="191.0" text="Soort" />
+                        <Spinner fx:id="sSoort" layoutX="102.0" layoutY="187.0" />
+                        <Spinner fx:id="sGeslacht" layoutX="102.0" layoutY="158.0" />
+                        <Spinner fx:id="sFamilie" layoutX="102.0" layoutY="126.0" />
+                        <Spinner fx:id="sType" layoutX="102.0" layoutY="98.0" />
+                        <Label fx:id="lblPlant" layoutX="26.0" layoutY="66.0" text="Plant" />
+                        <TextArea fx:id="txtUitkomst" layoutX="353.0" layoutY="209.0" prefHeight="200.0" prefWidth="200.0" />
+                        <Button fx:id="btnZoeken" layoutX="562.0" layoutY="62.0" mnemonicParsing="false" onMouseClicked="#clicked_Zoeken" text="Zoeken" />
+                        <Button fx:id="btnAchterwaards" layoutX="292.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#clicked_Achterwaards" text="&lt;-" />
+                        <Button fx:id="btnVoorwaards" layoutX="602.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#clicked_Voorwaards" text="-&gt;" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Untitled Tab 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
