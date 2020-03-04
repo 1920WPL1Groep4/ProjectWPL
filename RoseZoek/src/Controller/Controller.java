@@ -18,8 +18,9 @@ public class Controller {
         System.out.println(dbconnection);
 
     }
+    
 
-    public void btn(ActionEvent actionEvent) {
+    public void btnSearchAll(ActionEvent actionEvent) {
         System.out.println("just for testing purposes");
     }
 }
