@@ -42,6 +42,7 @@ public class Controller {
     public ComboBox cmbbGrondstof;          //Combox naam voor grondstof.
     public ComboBox cmbbVochtbehoefte;      //Combox naam voor vochtbehoefte.
     public ComboBox cmbbVoedingsbehoefte;   //Combox naam voor voedingsbehoefte.
+    public TextField txtPlant;
 
 
     private Connection dbconnection;
