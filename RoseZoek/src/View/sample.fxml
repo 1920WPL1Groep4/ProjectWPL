@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <children>
-      <TabPane fx:id="TabPane" layoutX="14.0" layoutY="14.0" prefHeight="676.0" prefWidth="874.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" layoutY="14.0" prefHeight="676.0" prefWidth="874.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Zoeken">
             <content>
@@ -39,7 +39,7 @@
                         <Spinner fx:id="sType" layoutX="102.0" layoutY="120.0" />
                         <Label layoutX="25.0" layoutY="89.0" text="Plant" />
                         <TextArea fx:id="txtUitkomst" layoutX="422.0" layoutY="124.0" prefHeight="126.0" prefWidth="200.0" />
-                        <Button fx:id="btnZoeken" layoutX="285.0" layoutY="85.0" mnemonicParsing="false" onMouseClicked="#clicked_Zoeken" text="Zoeken" />
+                        <Button layoutX="285.0" layoutY="85.0" mnemonicParsing="false" onAction="#clicked_zoeken" text="Zoeken" />
                         <Button fx:id="btnAchterwaards" disable="true" layoutX="392.0" layoutY="85.0" mnemonicParsing="false" onMouseClicked="#clicked_Achterwaards" text="&lt;-" />
                         <Button fx:id="btnVoorwaards" disable="true" layoutX="622.0" layoutY="85.0" mnemonicParsing="false" onMouseClicked="#clicked_Voorwaards" text="-&gt;" />
                         <Label fx:id="lblPlantResultaat" layoutX="451.0" layoutY="88.0" prefHeight="18.0" prefWidth="142.0" text="1ste resultaat" textAlignment="CENTER">
@@ -52,7 +52,7 @@
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="353.0" prefWidth="837.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="14.0" text="Plantdichtheid (m²)" />
-                                    <Label fx:id="lblBldhoogte" layoutX="12.0" layoutY="75.0" text="Bladhoogte (cm)" />
+                                    <Label layoutX="12.0" layoutY="75.0" text="Bladhoogte (cm)" />
                                     <Label layoutX="13.0" layoutY="107.0" text="Bloeit in" />
                                     <Label layoutX="15.0" layoutY="152.0" text="Bezonning" />
                                     <ComboBox fx:id="cmbbBezonning" layoutX="101.0" layoutY="148.0" prefWidth="150.0" />

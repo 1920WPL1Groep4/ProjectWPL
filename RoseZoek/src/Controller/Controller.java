@@ -21,16 +21,14 @@ public class Controller {
     public Spinner sSoort;      //Spinner naam voor de soort van de plant.
 
     public TextArea txtUitkomst;    //Dit is de naam van de textarea waar de uitkomst van de zoek opdracht getoont wordt.
-
+    public TextField txtPlant;
     public Button btnZoeken;        //Button naam voor de button zoeken.
     public Button btnAchterwaards;  //Button naam voor de button achterwaards.
     public Button btnVoorwaards;    //Button naam voor de button Voorwaards.
 
     public TitledPane tlpExtraEigenschappen;    //TitlePane voor de extra eigenschappen waar opgezocht kan worden.
-    public TextField txtPlant;
-
     //array van object plant
-    public List<Plant> plantjes;
+    List<Plant> plantjes;
 
     public ComboBox cmbbBezonning;          //Combox naam voor bezonning.
     public ComboBox cmbbOntwikkelingsS;     //Combox naam voor ontwikkelingssnelheid.
@@ -42,7 +40,7 @@ public class Controller {
     public ComboBox cmbbGrondstof;          //Combox naam voor grondstof.
     public ComboBox cmbbVochtbehoefte;      //Combox naam voor vochtbehoefte.
     public ComboBox cmbbVoedingsbehoefte;   //Combox naam voor voedingsbehoefte.
-    public TextField txtPlant;
+
 
 
     private Connection dbconnection;
@@ -55,7 +53,7 @@ public class Controller {
     }
 
     //Button die ervoorzorgt dat er een zoek resultaat wordt weergegeven in de textarea
-    public void clicked_Zoeken(MouseEvent mouseEvent) throws SQLException {
+    public void clicked_zoeken(MouseEvent mouseEvent) throws SQLException {
         txtUitkomst.clear();
         String sRequest = String.valueOf(txtPlant.getText());
         dao.PlantDao plantDao = new PlantDao(dbconnection);
@@ -85,7 +83,7 @@ public class Controller {
         if (i < 0) {
             i = plantjes.size()-1;
         }
-        plantjes.get(i);
+       lblPlantResultaat.setText(String.valueOf(plantjes.get(i)));
     }
 
     //Gaat een plant naar voor wanneer er op de button btnVoorwaards gedrukt wordt.
@@ -94,7 +92,7 @@ public class Controller {
         if (i > plantjes.size()) {
             i = 0;
         }
-        plantjes.get(i);
+        lblPlantResultaat.setText(String.valueOf(plantjes.get(i)));
     }
 
     public void refreshRecords(List<Plant> plantjes) {

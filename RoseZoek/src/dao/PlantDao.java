@@ -20,7 +20,7 @@ public class PlantDao {
 
 //PreparedStatements die input toelaten om de query aan te vullen
 private static final String GETPLANTSBYNAME =
-        "SELECT * FROM Combined WHERE plantnaam LIKE ?";
+        "SELECT * FROM Combined WHERE plantnaam LIKE ?"+
                     "and Familienaam like ? " +
                     "and groep like ?";
 
@@ -56,8 +56,6 @@ private static final String GETPLANTSBYNAME =
         ResultSet rs=stmtSelectByName.executeQuery();
         while(rs.next()){
             Plant plantje = new Plant(rs.getString("plantnaam"),rs.getString("Familienaam"));
-        while (rs.next()) {
-            Plant plantje = new Plant(rs.getString("plantnaam"), rs.getString("Familienaam"));
         plantList.add(plantje);
         }
         return plantList;
