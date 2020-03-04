@@ -23,11 +23,7 @@ private static final String GETPLANTSBYNAME =
         "SELECT * FROM Combined WHERE plantnaam LIKE ?";
 
 
-
-
     private PreparedStatement stmtSelectByName;
-
-
 
 
     public PlantDao(Connection dbConnection) throws SQLException {
@@ -54,13 +50,11 @@ private static final String GETPLANTSBYNAME =
 
   public List<Plant> getAllStartingByName(String naam) throws SQLException {
         List<Plant>plantList=new LinkedList<>();
-
         stmtSelectByName.setString(1,"%"+ naam +"%");
         ResultSet rs=stmtSelectByName.executeQuery();
         while(rs.next()){
             Plant plantje = new Plant(rs.getString("plantnaam"),rs.getString("Familienaam"));
         plantList.add(plantje);
-
         }
         return plantList;
   }
