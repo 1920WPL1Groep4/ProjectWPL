@@ -12,6 +12,8 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -63,6 +65,7 @@
                                     <Label layoutX="13.0" layoutY="244.0" text="Sociabiliteit" />
                                     <ComboBox fx:id="cmbbSociabiliteit" layoutX="101.0" layoutY="240.0" prefWidth="150.0" />
                                     <Label layoutX="274.0" layoutY="152.0" text="Bladgrootte tot" />
+                                    <Slider fx:id="sldrBladgrootte" layoutX="375.0" layoutY="152.0" />
                                     <Label layoutX="273.0" layoutY="184.0" text="Bladvorm" />
                                     <ComboBox fx:id="cmbbBladvorm" layoutX="370.0" layoutY="211.0" prefWidth="150.0" />
                                     <Label layoutX="272.0" layoutY="215.0" text="Ratio bloei/blad" />
@@ -79,36 +82,49 @@
                                     <ComboBox fx:id="cmbbGrondstof" layoutX="655.0" layoutY="146.0" prefWidth="150.0" />
                                     <ComboBox layoutX="655.0" layoutY="240.0" prefWidth="150.0" />
                                     <Slider layoutX="143.0" layoutY="16.0" />
-                                    <CheckBox layoutX="168.0" layoutY="107.0" mnemonicParsing="false" />
-                                    <CheckBox layoutX="116.0" layoutY="107.0" mnemonicParsing="false" />
-                                    <CheckBox layoutX="196.0" layoutY="107.0" mnemonicParsing="false" />
-                                    <CheckBox layoutX="142.0" layoutY="107.0" mnemonicParsing="false" />
-                                    <CheckBox layoutX="226.0" layoutY="107.0" mnemonicParsing="false" />
-                                    <TextField layoutX="113.0" layoutY="72.0" prefHeight="26.0" prefWidth="21.0" />
-                                    <TextField layoutX="139.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
-                                    <TextField layoutX="166.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
-                                    <TextField layoutX="193.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
-                                    <TextField layoutX="223.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
-                                    <CheckBox layoutX="255.0" layoutY="107.0" mnemonicParsing="false" />
-                                    <CheckBox layoutX="282.0" layoutY="107.0" mnemonicParsing="false" />
-                                    <CheckBox layoutX="307.0" layoutY="107.0" mnemonicParsing="false" />
-                                    <CheckBox layoutX="333.0" layoutY="107.0" mnemonicParsing="false" />
-                                    <CheckBox layoutX="410.0" layoutY="98.0" mnemonicParsing="false" />
-                                    <TextField layoutX="252.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
-                                    <TextField layoutX="279.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
-                                    <TextField layoutX="304.0" layoutY="72.0" prefHeight="26.0" prefWidth="21.0" />
-                                    <TextField layoutX="330.0" layoutY="72.0" prefHeight="26.0" prefWidth="21.0" />
-                                    <CheckBox layoutX="356.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiMaa" layoutX="168.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiJan" layoutX="116.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiApr" layoutX="196.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiFeb" layoutX="142.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiMei" layoutX="226.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiJun" layoutX="255.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiJul" layoutX="282.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiAug" layoutX="307.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiSep" layoutX="333.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiOkt" layoutX="356.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiNov" layoutX="384.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <CheckBox fx:id="cbBloeiDec" layoutX="409.0" layoutY="107.0" mnemonicParsing="false" />
+                                    <TextField fx:id="txtBladhJan" layoutX="113.0" layoutY="72.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhFeb" layoutX="139.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhMaa" layoutX="166.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhApr" layoutX="193.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhMei" layoutX="223.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhJun" layoutX="252.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhJul" layoutX="279.0" layoutY="71.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhAug" layoutX="304.0" layoutY="72.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhSep" layoutX="330.0" layoutY="72.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhOkt" layoutX="353.0" layoutY="72.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhNov" layoutX="382.0" layoutY="72.0" prefHeight="26.0" prefWidth="21.0" />
+                                    <TextField fx:id="txtBladhDec" layoutX="407.0" layoutY="72.0" prefHeight="26.0" prefWidth="21.0" />
                                     <Label layoutX="121.0" layoutY="43.0" text="J" />
                                     <Label layoutX="146.0" layoutY="43.0" text="F" />
                                     <Label layoutX="170.0" layoutY="43.0" text="M" />
-                                    <Label layoutX="198.0" layoutY="43.0" text="M" />
-                                    <Label layoutX="230.0" layoutY="43.0" text="A" />
+                                    <Label layoutX="198.0" layoutY="43.0" text="A" />
+                                    <Label layoutX="230.0" layoutY="43.0" text="M" />
                                     <Label layoutX="260.0" layoutY="43.0" text="J" />
                                     <Label layoutX="288.0" layoutY="43.0" text="J" />
                                     <Label layoutX="311.0" layoutY="43.0" text="A" />
                                     <Label layoutX="13.0" layoutY="43.0" text="Maanden" />
                                     <Label layoutX="337.0" layoutY="43.0" text="S" />
+                                    <Label layoutX="360.0" layoutY="43.0" text="O" />
+                                    <Label layoutX="389.0" layoutY="43.0" text="N" />
+                                    <Label layoutX="415.0" layoutY="43.0" text="D" />
+                                    <ImageView fitHeight="53.0" fitWidth="302.0" layoutX="504.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../kleuren.png" />
+                                       </image>
+                                    </ImageView>
+
                                  </children>
                               </AnchorPane>
                           </content>
