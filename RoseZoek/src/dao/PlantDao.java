@@ -17,11 +17,9 @@ public class PlantDao {
             "SELECT * FROM Combined";
 
 
-
-//PreparedStatements die input toelaten om de query aan te vullen
-private static final String GETPLANTSBYNAME =
-        "SELECT * FROM Combined WHERE plantnaam LIKE ?";
-
+    //PreparedStatements die input toelaten om de query aan te vullen
+    private static final String GETPLANTSBYNAME =
+            "SELECT * FROM Combined WHERE plantnaam LIKE ? and groep like ? and Familienaam like ?";
 
 
     private PreparedStatement stmtSelectByName;
@@ -29,7 +27,7 @@ private static final String GETPLANTSBYNAME =
 
     public PlantDao(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
-        stmtSelectByName =dbConnection.prepareStatement(GETPLANTSBYNAME);
+        stmtSelectByName = dbConnection.prepareStatement(GETPLANTSBYNAME);
     }
 
     public List<Plant> getAllPlants() {
@@ -38,7 +36,7 @@ private static final String GETPLANTSBYNAME =
             Statement stmt = dbConnection.createStatement();
             ResultSet rs = stmt.executeQuery(GETALLPLANTS);
             while (rs.next()) {
-                Plant plantje = new Plant(rs.getString("plantnaam"),rs.getString("Familienaam"));
+                Plant plantje = new Plant(rs.getString("plantnaam"), rs.getString("Familienaam"),rs.getString("groep"));
                 plantList.add(plantje);
             }
         } catch (SQLException ex) {
@@ -48,16 +46,17 @@ private static final String GETPLANTSBYNAME =
     }
 
 
-
-  public List<Plant> getAllStartingByName(String naam) throws SQLException {
-        List<Plant>plantList=new LinkedList<>();
-        stmtSelectByName.setString(1,"%"+ naam +"%");
-        ResultSet rs=stmtSelectByName.executeQuery();
-        while(rs.next()){
-            Plant plantje = new Plant(rs.getString("plantnaam"),rs.getString("Familienaam"));
-        plantList.add(plantje);
+    public List<Plant> getAllStartingByName(String naam, String groep, String familie) throws SQLException {
+        List<Plant> plantList = new LinkedList<>();
+        stmtSelectByName.setString(1, "%" + naam + "%");
+        stmtSelectByName.setString(2, "%" + groep + "%");
+        stmtSelectByName.setString(3, "%" + familie + "%");
+        ResultSet rs = stmtSelectByName.executeQuery();
+        while (rs.next()) {
+            Plant plantje = new Plant(rs.getString("plantnaam"), rs.getString("Familienaam"),rs.getString("groep"));
+            plantList.add(plantje);
         }
         return plantList;
-  }
+    }
 
 }

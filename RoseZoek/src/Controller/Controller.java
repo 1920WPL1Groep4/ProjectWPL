@@ -12,6 +12,16 @@ import java.sql.*;
 import java.util.List;
 
 public class Controller {
+
+    public ComboBox cbType;
+    public ComboBox cbFam;
+    public ComboBox cbGeslacht;
+    public ComboBox cbSoort;
+
+    public void initialize(){
+        cbType.getItems().addAll("","kruidenplanten","siergrassen","vivassen","bamboes","varens","bolgewassen in pot");
+        }
+
     //Index i
     int i;
     public Label lblPlantResultaat; //Label naam waar het resultaat
@@ -55,9 +65,11 @@ public class Controller {
     //Button die ervoorzorgt dat er een zoek resultaat wordt weergegeven in de textarea
     public void clicked_zoeken(ActionEvent actionEvent) throws SQLException {
         txtUitkomst.clear();
-        String sRequest = String.valueOf(txtPlant.getText());
+        String sNaam = String.valueOf(txtPlant.getText());
+        String sType=String.valueOf(cbType.getValue());
+        String sFam="";
         dao.PlantDao plantDao = new PlantDao(dbconnection);
-        plantjes = plantDao.getAllStartingByName(sRequest);
+        plantjes = plantDao.getAllStartingByName(sNaam,sType,sFam);
         refreshRecords(plantjes);
         if (txtPlant.getText().equals("") && plantjes.size() > 1000) {
             longWaitingTimesWarning();

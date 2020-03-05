@@ -5,8 +5,8 @@ public class Plant {
     String sFamilie;
     String sType;
 
-    public Plant(String sType, String sFamilie) {
-        this.sNaam = sType;
+    public Plant(String sNaam, String sFamilie,String sType) {
+        this.sNaam = sNaam;
         this.sFamilie = sFamilie;
         this.sType = sType;
 
