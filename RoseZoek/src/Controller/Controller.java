@@ -26,6 +26,7 @@ public class Controller {
 
     //array van object plant
     List<Plant> plantjes;
+    List<String> types;
 
     public ComboBox cmbbBezonning;          //Combox naam voor bezonning.
     public ComboBox cmbbOntwikkelingsS;     //Combox naam voor ontwikkelingssnelheid.
@@ -42,13 +43,15 @@ public class Controller {
     public ComboBox cbGeslacht;
     public ComboBox cbSoort;
 
-    public void initialize() {
-        cbType.getItems().addAll("", "kruidenplanten", "siergrassen", "vivassen", "bamboes", "varens", "bolgewassen in pot");
-        cbFam.getItems().addAll("", "asteraceae");
-    }
-
     private Connection dbconnection;
 
+
+    public void initialize() throws SQLException {
+        PlantDao plantdao =new PlantDao(dbconnection);
+        types =plantdao.getAllTypes();
+        cbType.getItems().addAll(types);
+
+    }
     public Controller() throws SQLException {
         dbconnection = Database.getInstance().getConnection();
         System.out.println("ok");
@@ -67,7 +70,6 @@ public class Controller {
         dao.PlantDao plantDao = new PlantDao(dbconnection);
         plantjes = plantDao.getAllStartingByName(sNaam, sType,sFam,sGeslacht,sSoort);
         refreshRecords(plantjes);
-        System.out.println(sNaam + sType +sFam + sGeslacht + sSoort);
         if (txtPlant.getText().equals("") && plantjes.size() > 1000) {
             longWaitingTimesWarning();
         }
