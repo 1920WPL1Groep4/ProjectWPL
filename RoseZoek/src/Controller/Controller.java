@@ -13,31 +13,17 @@ import java.util.List;
 
 public class Controller {
 
-    public ComboBox cbType;
-    public ComboBox cbFam;
-    public ComboBox cbGeslacht;
-    public ComboBox cbSoort;
-
-    public void initialize(){
-        cbType.getItems().addAll("","kruidenplanten","siergrassen","vivassen","bamboes","varens","bolgewassen in pot");
-        }
-
     //Index i
     int i;
     public Label lblPlantResultaat; //Label naam waar het resultaat
-
-    public Spinner sType;       //Spinner naam voor het type van de plant.
-    public Spinner sFamilie;    //Spinner naam voor de familie van de plant.
-    public Spinner sGeslacht;   //Spinner naam voor het geslacht van de plant.
-    public Spinner sSoort;      //Spinner naam voor de soort van de plant.
-
+    public Label lblCounter;        // aantal resultaten die gevonden zijn
     public TextArea txtUitkomst;    //Dit is de naam van de textarea waar de uitkomst van de zoek opdracht getoont wordt.
     public TextField txtPlant;
-    public Button btnZoeken;        //Button naam voor de button zoeken.
     public Button btnAchterwaards;  //Button naam voor de button achterwaards.
     public Button btnVoorwaards;    //Button naam voor de button Voorwaards.
 
     public TitledPane tlpExtraEigenschappen;    //TitlePane voor de extra eigenschappen waar opgezocht kan worden.
+
     //array van object plant
     List<Plant> plantjes;
 
@@ -51,7 +37,15 @@ public class Controller {
     public ComboBox cmbbGrondstof;          //Combox naam voor grondstof.
     public ComboBox cmbbVochtbehoefte;      //Combox naam voor vochtbehoefte.
     public ComboBox cmbbVoedingsbehoefte;   //Combox naam voor voedingsbehoefte.
+    public ComboBox cbType;
+    public ComboBox cbFam;
+    public ComboBox cbGeslacht;
+    public ComboBox cbSoort;
 
+    public void initialize() {
+        cbType.getItems().addAll("", "kruidenplanten", "siergrassen", "vivassen", "bamboes", "varens", "bolgewassen in pot");
+        cbFam.getItems().addAll("", "asteraceae");
+    }
 
     private Connection dbconnection;
 
@@ -66,11 +60,14 @@ public class Controller {
     public void clicked_zoeken(ActionEvent actionEvent) throws SQLException {
         txtUitkomst.clear();
         String sNaam = String.valueOf(txtPlant.getText());
-        String sType=String.valueOf(cbType.getValue());
-        String sFam="";
+        String sType = String.valueOf(cbType.getValue());
+        String sFam = String.valueOf(cbFam.getValue());
+        String sGeslacht = String.valueOf(cbGeslacht.getValue());
+        String sSoort = String.valueOf(cbSoort.getValue());
         dao.PlantDao plantDao = new PlantDao(dbconnection);
-        plantjes = plantDao.getAllStartingByName(sNaam,sType,sFam);
+        plantjes = plantDao.getAllStartingByName(sNaam, sType,sFam,sGeslacht,sSoort);
         refreshRecords(plantjes);
+        System.out.println(sNaam + sType +sFam + sGeslacht + sSoort);
         if (txtPlant.getText().equals("") && plantjes.size() > 1000) {
             longWaitingTimesWarning();
         }
@@ -85,7 +82,7 @@ public class Controller {
             btnAchterwaards.setDisable(false);
             btnVoorwaards.setDisable(false);
             i = 0;
-            lblPlantResultaat.setText(String.valueOf(plantjes.get(i). MyPlantNameToString()));
+            lblPlantResultaat.setText(String.valueOf(plantjes.get(i).MyPlantNameToString()));
         }
 
     }
@@ -102,7 +99,7 @@ public class Controller {
     //Gaat een plant naar voor wanneer er op de button btnVoorwaards gedrukt wordt.
     public void clicked_Voorwaards(MouseEvent mouseEvent) {
         i++;
-        if (i > plantjes.size()-1) {
+        if (i > plantjes.size() - 1) {
             i = 0;
         }
         lblPlantResultaat.setText(String.valueOf(plantjes.get(i).MyPlantNameToString()));
@@ -110,6 +107,7 @@ public class Controller {
 
     public void refreshRecords(List<Plant> plantjes) {
         System.out.println(plantjes.size());
+        lblCounter.setText(String.valueOf(plantjes.size()));
     }
 
     public void longWaitingTimesWarning() {

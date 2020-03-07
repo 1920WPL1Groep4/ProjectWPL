@@ -14,12 +14,12 @@ public class PlantDao {
 
     //Statements waar geen externe input aan te pas komt
     private static final String GETALLPLANTS =
-            "SELECT * FROM Combined";
+            "SELECT * FROM plant";
 
 
     //PreparedStatements die input toelaten om de query aan te vullen
     private static final String GETPLANTSBYNAME =
-            "SELECT * FROM Combined WHERE plantnaam LIKE ? and groep like ? and Familienaam like ?";
+            "SELECT * FROM plant WHERE fgsv LIKE ? and type like ? and familie like ? and geslacht like ? and soort like ? ";
 
 
     private PreparedStatement stmtSelectByName;
@@ -36,7 +36,7 @@ public class PlantDao {
             Statement stmt = dbConnection.createStatement();
             ResultSet rs = stmt.executeQuery(GETALLPLANTS);
             while (rs.next()) {
-                Plant plantje = new Plant(rs.getString("plantnaam"), rs.getString("Familienaam"),rs.getString("groep"));
+                Plant plantje = new Plant(rs.getString("fgsv"), rs.getString("familie"), rs.getString("type"));
                 plantList.add(plantje);
             }
         } catch (SQLException ex) {
@@ -46,14 +46,16 @@ public class PlantDao {
     }
 
 
-    public List<Plant> getAllStartingByName(String naam, String groep, String familie) throws SQLException {
+    public List<Plant> getAllStartingByName(String naam, String type, String familie, String geslacht,String soort) throws SQLException {
         List<Plant> plantList = new LinkedList<>();
         stmtSelectByName.setString(1, "%" + naam + "%");
-        stmtSelectByName.setString(2, "%" + groep + "%");
+        stmtSelectByName.setString(2, "%" + type + "%");
         stmtSelectByName.setString(3, "%" + familie + "%");
+        stmtSelectByName.setString(4, "%" + geslacht + "%");
+        stmtSelectByName.setString(5, "%" + soort + "%");
         ResultSet rs = stmtSelectByName.executeQuery();
         while (rs.next()) {
-            Plant plantje = new Plant(rs.getString("plantnaam"), rs.getString("Familienaam"),rs.getString("groep"));
+            Plant plantje = new Plant(rs.getString("fgsv"), rs.getString("familie"), rs.getString("type"));
             plantList.add(plantje);
         }
         return plantList;
