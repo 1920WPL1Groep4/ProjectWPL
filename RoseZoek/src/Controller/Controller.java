@@ -46,12 +46,15 @@ public class Controller {
     private Connection dbconnection;
 
 
+
     public void initialize() throws SQLException {
         PlantDao plantdao =new PlantDao(dbconnection);
-        types =plantdao.getAllTypes();
+        types = plantdao.getAllTypes();
         cbType.getItems().addAll(types);
+        cbType.setEditable(true);
 
     }
+
     public Controller() throws SQLException {
         dbconnection = Database.getInstance().getConnection();
         System.out.println("ok");

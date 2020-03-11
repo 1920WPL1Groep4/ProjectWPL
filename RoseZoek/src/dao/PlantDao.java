@@ -14,7 +14,7 @@ public class PlantDao {
 
     //Statements waar geen externe input aan te pas komt
     private static final String GETALLTYPES =
-            "SELECT type_naam FROM type";
+            "SELECT distinct(type) FROM plant";
 
 
     //PreparedStatements die input toelaten om de query aan te vullen
@@ -37,7 +37,7 @@ public class PlantDao {
             Statement stmt = dbConnection.createStatement();
             ResultSet rs = stmt.executeQuery(GETALLTYPES);
             while (rs.next()) {
-              typeList.add(rs.getString("type_naam"));
+              typeList.add(rs.getString("type"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(PlantDao.class.getName()).log(Level.SEVERE, null, ex);
