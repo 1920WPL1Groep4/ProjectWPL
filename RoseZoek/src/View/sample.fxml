@@ -109,10 +109,10 @@
                           </content>
                         </TitledPane>
                         <ListView layoutX="652.0" layoutY="122.0" prefHeight="129.0" prefWidth="200.0" />
-                        <ComboBox fx:id="cbType" layoutX="101.0" layoutY="120.0" prefWidth="150.0" value="" />
-                        <ComboBox fx:id="cbFam" layoutX="101.0" layoutY="155.0" prefWidth="150.0" value="" />
-                        <ComboBox fx:id="cbGeslacht" layoutX="101.0" layoutY="190.0" prefWidth="150.0" value="" />
-                        <ComboBox fx:id="cbSoort" layoutX="101.0" layoutY="225.0" prefWidth="150.0" value="" />
+                        <ComboBox fx:id="cbType" editable="true" layoutX="101.0" layoutY="120.0" onAction="#cmboTypeActionEvent" prefWidth="150.0" value="" />
+                        <ComboBox fx:id="cbFam" editable="true" layoutX="101.0" layoutY="155.0" prefWidth="150.0" value="" />
+                        <ComboBox fx:id="cbGeslacht" editable="true" layoutX="101.0" layoutY="190.0" prefWidth="150.0" value="" />
+                        <ComboBox fx:id="cbSoort" editable="true" layoutX="101.0" layoutY="225.0" prefWidth="150.0" value="" />
                         <Label layoutX="423.0" layoutY="252.0" text="Aantal records:" />
                         <Label fx:id="lblCounter" layoutX="508.0" layoutY="252.0" text="0" />
                      </children>

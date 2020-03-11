@@ -26,7 +26,7 @@ public class Controller {
 
     //array van object plant
     List<Plant> plantjes;
-    List<String> types;
+    List<String> types, fams, geslacht, soort;
 
     public ComboBox cmbbBezonning;          //Combox naam voor bezonning.
     public ComboBox cmbbOntwikkelingsS;     //Combox naam voor ontwikkelingssnelheid.
@@ -47,11 +47,18 @@ public class Controller {
 
 
     public void initialize() throws SQLException {
-        PlantDao plantdao =new PlantDao(dbconnection);
-        types =plantdao.getAllTypes();
+        PlantDao plantdao = new PlantDao(dbconnection);
+        types = plantdao.getAllTypes();
         cbType.getItems().addAll(types);
+        fams = plantdao.getAllFams();
+        cbFam.getItems().addAll(fams);
+        geslacht = plantdao.getAllGeslacht();
+        cbGeslacht.getItems().addAll(geslacht);
+        soort = plantdao.getAllSoort();
+        cbSoort.getItems().addAll(soort);
 
     }
+
     public Controller() throws SQLException {
         dbconnection = Database.getInstance().getConnection();
         System.out.println("ok");
@@ -68,7 +75,7 @@ public class Controller {
         String sGeslacht = String.valueOf(cbGeslacht.getValue());
         String sSoort = String.valueOf(cbSoort.getValue());
         dao.PlantDao plantDao = new PlantDao(dbconnection);
-        plantjes = plantDao.getAllStartingByName(sNaam, sType,sFam,sGeslacht,sSoort);
+        plantjes = plantDao.getAllStartingByName(sNaam, sType, sFam, sGeslacht, sSoort);
         refreshRecords(plantjes);
         if (txtPlant.getText().equals("") && plantjes.size() > 1000) {
             longWaitingTimesWarning();
@@ -117,6 +124,15 @@ public class Controller {
     }
 
 
+    public void cmboTypeActionEvent(ActionEvent actionEvent) throws SQLException {
+        if (txtPlant.equals("")) {
+        } else {
+            String sResult=String.valueOf(cbType.getValue());
+            dao.PlantDao plantDao = new PlantDao(dbconnection);
+
+            plantjes = plantDao.getDropDownResearch("familie","type",sResult);
+        }
+    }
 }
 
 
