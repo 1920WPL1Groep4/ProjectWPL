@@ -27,6 +27,15 @@ public class Controller {
     //array van object plant
     List<Plant> plantjes;
     List<String> types;
+    List<String> Soortnaam;
+    List<String> Geslacht;
+    List<String> Familie;
+    List<String> Bezonning;
+    List<String> Ontwikkeling;
+    List<String> Levensduur;
+    List<String> Sociabiliteit;
+    List<String> Bladvorm;
+    List<String> Ratio;
 
     public ComboBox cmbbBezonning;          //Combox naam voor bezonning.
     public ComboBox cmbbOntwikkelingsS;     //Combox naam voor ontwikkelingssnelheid.
@@ -50,8 +59,28 @@ public class Controller {
     public void initialize() throws SQLException {
         PlantDao plantdao =new PlantDao(dbconnection);
         types = plantdao.getAllTypes();
+        Soortnaam = plantdao.getallsoort();
+        Geslacht = plantdao.geslachtsoort();
+        Familie = plantdao.getAllFamilie();
+        Bezonning = plantdao.getBezonning();
+        Ontwikkeling = plantdao.getontwikkeling();
+        Levensduur = plantdao.GetLevensduur();
+        Sociabiliteit = plantdao.GetSociabiliteit();
+        Bladvorm = plantdao.getBladVorm();
+        Ratio = plantdao.getRatio();
         cbType.getItems().addAll(types);
+        cbSoort.getItems().addAll(Soortnaam);
         cbType.setEditable(true);
+        cbGeslacht.getItems().addAll(Geslacht);
+        cbFam.getItems().addAll(Familie);
+        cmbbBezonning.getItems().addAll(Bezonning);
+        cmbbOntwikkelingsS.getItems().addAll(Ontwikkeling);
+        cmbbLevensduur.getItems().addAll(Levensduur);
+        cmbbSociabiliteit.getItems().addAll(Sociabiliteit);
+        //cmbbratio en cmbbladvorm zijn nog omgewisseld van naam.
+        cmbbBladvorm.getItems().addAll(Bladvorm);
+        cmbbRatio.getItems().addAll(Ratio);
+
 
     }
 
