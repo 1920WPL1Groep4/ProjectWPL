@@ -14,7 +14,9 @@ public class PlantDao {
 
     //Statements waar geen externe input aan te pas komt
     private static final String GETALLTYPES =
-            "SELECT distinct(type) FROM plant";
+            "SELECT type_naam FROM type";
+    private static final String GETALLFAMILIES =
+            "SELECT distinct(familie) FROM plant";
 
 
     //PreparedStatements die input toelaten om de query aan te vullen
@@ -37,7 +39,7 @@ public class PlantDao {
             Statement stmt = dbConnection.createStatement();
             ResultSet rs = stmt.executeQuery(GETALLTYPES);
             while (rs.next()) {
-              typeList.add(rs.getString("type"));
+              typeList.add(rs.getString("type_naam"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(PlantDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -45,6 +47,20 @@ public class PlantDao {
         return typeList;
     }
 
+    public List<String> getAllFamilies() {
+        List<String> familieList = new ArrayList<>();
+        familieList.add(0,"");
+        try {
+            Statement stmt = dbConnection.createStatement();
+            ResultSet rs = stmt.executeQuery(GETALLFAMILIES);
+            while (rs.next()) {
+                familieList.add(rs.getString("familie"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PlantDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return familieList;
+    }
 
     public List<Plant> getAllStartingByName(String naam, String type, String familie, String geslacht,String soort) throws SQLException {
         List<Plant> plantList = new LinkedList<>();
